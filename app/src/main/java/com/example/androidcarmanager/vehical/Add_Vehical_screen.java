@@ -106,8 +106,9 @@ public class Add_Vehical_screen extends AppCompatActivity {
             String manufacturer=bundle.getString("manufacturer");
             String purchaseDate=bundle.getString("purchaseDate");
             String milage=bundle.getString("milage");
-            String fuelLimit=bundle.getString("fuelLimit");
             String plateNum=bundle.getString("plateNum");
+            String fuelLimit=bundle.getString("fuelLimit");
+
 
             vNameEt.setText(title);
             odoreadingEt.setText(meterReading);

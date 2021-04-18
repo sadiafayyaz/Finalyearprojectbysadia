@@ -48,7 +48,7 @@ public class Cleaning_layout extends Fragment {
     BarDataSet barDataSet1, barDataSet2, barDataSet3, barDataSet4, barDataSet5, barDataSet6, barDataSet7, barDataSet8, barDataSet9, barDataSet10, barDataSet11, barDataSet12;
     BarData barData;
     ArrayList<BarEntry> barEntries1, barEntries2, barEntries3, barEntries4, barEntries5, barEntries6, barEntries7,
-            barEntries8, barEntries9, barEntries10, barEntries11, barEntrie12;
+            barEntries8, barEntries9, barEntries10, barEntries11, barEntries12;
 
     //  graph values from firebase
     ArrayList<Double> Cleaning = new ArrayList<Double>();
@@ -63,8 +63,8 @@ public class Cleaning_layout extends Fragment {
 //    ArrayList<Long> enginetuningdate = new ArrayList<Long>();
     Long queryDate, todayDate;
     String vehicleId;
-    Double cost1 = 0.01, cost2 = 0.03, cost3 = 0.05, cost4 = 0.07, cost5 = 0.09, cost6 = 0.05,
-            cost7 = 0.08, cost8 = 0.06, cost9 = 0.09, cost10 = 0.06, cost11 = 0.04, cost12 = 0.02;
+    Double cost1 = 0.01, cost2 = 0.01, cost3 = 0.01, cost4 = 0.01, cost5 = 0.01, cost6 = 0.01,
+            cost7 = 0.01, cost8 = 0.01, cost9 = 0.01, cost10 = 0.01, cost11 = 0.01, cost12 = 0.01;
 
 
     private DatabaseReference databaseReference1;
@@ -96,9 +96,9 @@ public class Cleaning_layout extends Fragment {
 
 //        barChart.getXAxis().setEnabled(true);
         YAxis rightYAxis = barChart.getAxisRight();
-        rightYAxis.setEnabled(false);
+//        rightYAxis.setEnabled(false);
         XAxis topYAxis = barChart.getXAxis();
-        topYAxis.setEnabled(false);
+//        topYAxis.setEnabled(false);
         barChart.animateXY(2000, 2000);
 
         barEntries1 = new ArrayList<BarEntry>();
@@ -112,21 +112,22 @@ public class Cleaning_layout extends Fragment {
         barEntries9 = new ArrayList<BarEntry>();
         barEntries10 = new ArrayList<BarEntry>();
         barEntries11 = new ArrayList<BarEntry>();
-        barEntrie12 = new ArrayList<BarEntry>();
+        barEntries12 = new ArrayList<BarEntry>();
 
         barEntries1.add(new BarEntry(1, cost1.floatValue()));
-        barEntries2.add(new BarEntry(2, cost2.floatValue()));
+        barEntries2.add(new BarEntry(2f, cost2.floatValue()));
         barEntries3.add(new BarEntry(3, cost3.floatValue()));
-        barEntries4.add(new BarEntry(4, cost4.floatValue()));
+        barEntries4.add(new BarEntry(4f, cost4.floatValue()));
         barEntries5.add(new BarEntry(5, cost5.floatValue()));
-        barEntries6.add(new BarEntry(6, cost6.floatValue()));
+        barEntries6.add(new BarEntry(6f, cost6.floatValue()));
         barEntries7.add(new BarEntry(7, cost7.floatValue()));
-        barEntries8.add(new BarEntry(8, cost8.floatValue()));
+        barEntries8.add(new BarEntry(8f, cost8.floatValue()));
         barEntries9.add(new BarEntry(9, cost9.floatValue()));
-        barEntries10.add(new BarEntry(10, cost10.floatValue()));
+        barEntries10.add(new BarEntry(10f, cost10.floatValue()));
         barEntries11.add(new BarEntry(11, cost11.floatValue()));
-        barEntrie12.add(new BarEntry(12, cost12.floatValue()));
+        barEntries12.add(new BarEntry(12f, cost12.floatValue()));
         initializeBarGraph(false);
+//        initializeBarGraph(true);
 
 //        progressDialog = ProgressDialog.show(Cleaning_layout.this, "", "Please Wait, Loading...", true);
         getDataFromFirebase();
@@ -134,93 +135,92 @@ public class Cleaning_layout extends Fragment {
     }
     public void initializeBarGraph(Boolean value) {
 
-            // setting labels
-            if (value) {
-                barDataSet1.removeFirst();
-                barDataSet2.removeFirst();
-                barDataSet3.removeFirst();
-                barDataSet4.removeFirst();
-                barDataSet5.removeFirst();
-                barDataSet6.removeFirst();
-                barDataSet7.removeFirst();
-                barDataSet8.removeFirst();
-                barDataSet9.removeFirst();
-                barDataSet10.removeFirst();
-                barDataSet11.removeFirst();
-                barDataSet12.removeFirst();
+        // setting labels
+        if (value) {
+            barDataSet1.removeFirst();
+            barDataSet2.removeFirst();
+            barDataSet3.removeFirst();
+            barDataSet4.removeFirst();
+            barDataSet5.removeFirst();
+            barDataSet6.removeFirst();
+            barDataSet7.removeFirst();
+            barDataSet8.removeFirst();
+            barDataSet9.removeFirst();
+            barDataSet10.removeFirst();
+            barDataSet11.removeFirst();
+            barDataSet12.removeFirst();
 
-                barChart.notifyDataSetChanged();
-                barChart.invalidate();
-            }else {
-                barDataSet1 = new BarDataSet(barEntries1, "");
-                barDataSet2 = new BarDataSet(barEntries2, "");
-                barDataSet3 = new BarDataSet(barEntries3, "");
-                barDataSet4 = new BarDataSet(barEntries4, "");
-                barDataSet5 = new BarDataSet(barEntries5, "");
-                barDataSet6 = new BarDataSet(barEntries6, "");
-                barDataSet7 = new BarDataSet(barEntries1, "");
-                barDataSet8 = new BarDataSet(barEntries2, "");
-                barDataSet9 = new BarDataSet(barEntries3, "");
-                barDataSet10 = new BarDataSet(barEntries4, "");
-                barDataSet11 = new BarDataSet(barEntries5, "");
-                barDataSet12 = new BarDataSet(barEntries6, "");
+//                barChart.notifyDataSetChanged();
+//                barChart.invalidate();
+        }else {
+            barDataSet1 = new BarDataSet(barEntries1, "");
+            barDataSet2 = new BarDataSet(barEntries2, "");
+            barDataSet3 = new BarDataSet(barEntries3, "");
+            barDataSet4 = new BarDataSet(barEntries4, "");
+            barDataSet5 = new BarDataSet(barEntries5, "");
+            barDataSet6 = new BarDataSet(barEntries6, "");
+            barDataSet7 = new BarDataSet(barEntries7, "");
+            barDataSet8 = new BarDataSet(barEntries8, "");
+            barDataSet9 = new BarDataSet(barEntries9, "");
+            barDataSet10 = new BarDataSet(barEntries10, "");
+            barDataSet11 = new BarDataSet(barEntries11, "");
+            barDataSet12 = new BarDataSet(barEntries12, "");
 
 //      setting colours
-                barDataSet1.setColors(ColorTemplate.COLORFUL_COLORS);
-                barDataSet2.setColors(R.color.bar2);
-                barDataSet3.setColors(ColorTemplate.JOYFUL_COLORS);
-                barDataSet4.setColors(ColorTemplate.LIBERTY_COLORS);
-                barDataSet5.setColors(ColorTemplate.VORDIPLOM_COLORS);
-                barDataSet6.setColors(ColorTemplate.PASTEL_COLORS);
-                barDataSet7.setColors(ColorTemplate.COLORFUL_COLORS);
-                barDataSet8.setColors(R.color.bar2);
-                barDataSet9.setColors(ColorTemplate.JOYFUL_COLORS);
-                barDataSet10.setColors(ColorTemplate.LIBERTY_COLORS);
-                barDataSet11.setColors(ColorTemplate.VORDIPLOM_COLORS);
-                barDataSet12.setColors(ColorTemplate.PASTEL_COLORS);
+            barDataSet1.setColors(ColorTemplate.COLORFUL_COLORS);
+            barDataSet2.setColors(R.color.bar2);
+            barDataSet3.setColors(ColorTemplate.JOYFUL_COLORS);
+            barDataSet4.setColors(ColorTemplate.LIBERTY_COLORS);
+            barDataSet5.setColors(ColorTemplate.VORDIPLOM_COLORS);
+            barDataSet6.setColors(ColorTemplate.PASTEL_COLORS);
+            barDataSet7.setColors(ColorTemplate.COLORFUL_COLORS);
+            barDataSet8.setColors(R.color.bar2);
+            barDataSet9.setColors(ColorTemplate.JOYFUL_COLORS);
+            barDataSet10.setColors(ColorTemplate.LIBERTY_COLORS);
+            barDataSet11.setColors(ColorTemplate.VORDIPLOM_COLORS);
+            barDataSet12.setColors(ColorTemplate.PASTEL_COLORS);
 
 //      setting text colour
-                barDataSet1.setValueTextColor(Color.BLUE);
-                barDataSet2.setValueTextColor(Color.BLUE);
-                barDataSet3.setValueTextColor(Color.BLUE);
-                barDataSet4.setValueTextColor(Color.BLUE);
-                barDataSet5.setValueTextColor(Color.BLUE);
-                barDataSet6.setValueTextColor(Color.BLUE);
-                barDataSet7.setValueTextColor(Color.BLUE);
-                barDataSet8.setValueTextColor(Color.BLUE);
-                barDataSet9.setValueTextColor(Color.BLUE);
-                barDataSet10.setValueTextColor(Color.BLUE);
-                barDataSet11.setValueTextColor(Color.BLUE);
-                barDataSet12.setValueTextColor(Color.BLUE);
+            barDataSet1.setValueTextColor(Color.BLUE);
+            barDataSet2.setValueTextColor(Color.BLUE);
+            barDataSet3.setValueTextColor(Color.BLUE);
+            barDataSet4.setValueTextColor(Color.BLUE);
+            barDataSet5.setValueTextColor(Color.BLUE);
+            barDataSet6.setValueTextColor(Color.BLUE);
+            barDataSet7.setValueTextColor(Color.BLUE);
+            barDataSet8.setValueTextColor(Color.BLUE);
+            barDataSet9.setValueTextColor(Color.BLUE);
+            barDataSet10.setValueTextColor(Color.BLUE);
+            barDataSet11.setValueTextColor(Color.BLUE);
+            barDataSet12.setValueTextColor(Color.BLUE);
 
 //      setting value textsize
-                barDataSet1.setValueTextSize(12);
-                barDataSet2.setValueTextSize(12);
-                barDataSet3.setValueTextSize(12);
-                barDataSet4.setValueTextSize(12);
-                barDataSet5.setValueTextSize(12);
-                barDataSet6.setValueTextSize(12);
-                barDataSet7.setValueTextSize(12);
-                barDataSet8.setValueTextSize(12);
-                barDataSet9.setValueTextSize(12);
-                barDataSet10.setValueTextSize(12);
-                barDataSet11.setValueTextSize(12);
-                barDataSet12.setValueTextSize(12);
+            barDataSet1.setValueTextSize(12);
+            barDataSet2.setValueTextSize(12);
+            barDataSet3.setValueTextSize(12);
+            barDataSet4.setValueTextSize(12);
+            barDataSet5.setValueTextSize(12);
+            barDataSet6.setValueTextSize(12);
+            barDataSet7.setValueTextSize(12);
+            barDataSet8.setValueTextSize(12);
+            barDataSet9.setValueTextSize(12);
+            barDataSet10.setValueTextSize(12);
+            barDataSet11.setValueTextSize(12);
+            barDataSet12.setValueTextSize(12);
 
-                barData = new BarData(barDataSet1, barDataSet2, barDataSet3, barDataSet4, barDataSet5, barDataSet6,
-                        barDataSet7, barDataSet8, barDataSet9, barDataSet10, barDataSet11, barDataSet12);
-                float groupSpace = 0.46f;
-                float barSpace = 0.2f; // x2 dataset
-                float barWidth = 0.2f; // x2 dataset
-                barData.setBarWidth(barWidth);
-                barChart.setData(barData);
-                barChart.groupBars(0.5f, groupSpace, barSpace);
+            barData = new BarData(barDataSet1, barDataSet2, barDataSet3, barDataSet4, barDataSet5, barDataSet6, barDataSet7, barDataSet8, barDataSet9, barDataSet10, barDataSet11, barDataSet12);
+            float groupSpace = 0.04f;
+            float barSpace = 0.4f; // x2 dataset
+            float barWidth = 0.5f; // x2 dataset
+            barData.setBarWidth(barWidth);
+            barChart.setData(barData);
+            barChart.groupBars(0.45f, groupSpace, barSpace);
 
-//          barChart.setFitBars(true);
-                barChart.notifyDataSetChanged();
-            barChart.invalidate();
-            }
+//                barChart.setFitBars(true);
+//                barChart.notifyDataSetChanged();
+//                barChart.invalidate();
         }
+    }
 
     public void getDataFromFirebase() {
 
@@ -231,21 +231,21 @@ public class Cleaning_layout extends Fragment {
             public void onSuccess(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
 //                  maintenance
-                    if (dataSnapshot.child("Cleaning").exists()) {
-                        databaseReference2 = FirebaseDatabase.getInstance().getReference("users/" + user.getUid() + "/expenses/" + vehicleId + "/Maintenance");
+                    if (dataSnapshot.child("cleaning").exists()) {
+                        databaseReference2 = FirebaseDatabase.getInstance().getReference("users/" + user.getUid() + "/expenses/" + vehicleId + "/cleaning");
                         databaseReference2.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
                             @Override
                             public void onSuccess(DataSnapshot dataSnapshot) {
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                     Expence_DB expensesDB = ds.getValue(Expence_DB.class);
                                     Log.d("expensesDB(maintena)", String.valueOf(expensesDB.getCost()));
-                                    Cleaning.add(expensesDB.getCost());
-                                    cleaningDate.add(expensesDB.getDate());
+//                                    Cleaning.add(expensesDB.getCost());
+//                                    cleaningDate.add(expensesDB.getDate());
                                 }
                             }
                         });
                     } else {
-                        Log.d("expensesDB(maintenance)", "Empty");
+                        Log.d("expensesDB(cleaning)", "Empty");
                     }
                 }
             }
@@ -488,11 +488,11 @@ public class Cleaning_layout extends Fragment {
                     Log.d("Cleaning", "out of filter");
                 }
             }
-            barEntrie12.add(new BarEntry(1, cost5.floatValue()));
+            barEntries12.add(new BarEntry(1, cost5.floatValue()));
             cost12 = 0.1;
         } else {
             Log.d("cost12", "empty");
-            barEntrie12.add(new BarEntry(1, 0));
+            barEntries12.add(new BarEntry(1, 0));
         }
     }
 

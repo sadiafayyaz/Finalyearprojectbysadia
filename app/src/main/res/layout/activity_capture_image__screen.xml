@@ -84,7 +84,7 @@
             android:padding="8dp"/>
 
         <Button
-            android:id="@+id/btncapture"
+            android:id="@+id/btnupload"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_below="@+id/textView2"
